@@ -60,3 +60,14 @@ class StarterSite extends TimberSite {
 }
 
 new StarterSite();
+
+
+/**
+ * Enqueue scripts and styles
+ */
+function agrafka_scripts() {
+	// wp_enqueue_style( 'agrafka-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'agrafka-main', get_template_directory_uri() . '/static/dist/css/main.css' );
+}
+
+add_action( 'wp_enqueue_scripts', 'agrafka_scripts' );

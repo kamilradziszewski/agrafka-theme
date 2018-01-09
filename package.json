@@ -7,8 +7,9 @@
     "prestart": "npm run copy-purecss",
     "start": "npm-run-all --parallel watch:css",
     "watch:css": "nodemon --watch ./static/src/sass -e sass -x \"npm run build:css\"",
-    "prebuild:css": "node-sass ./static/src/sass/main.sass ./static/dist/css/main.css --output-style expanded",
-    "build:css": "node_modules/postcss-cli/bin/postcss --use autoprefixer --base 'last 2 versions' ./static/dist/css/main.css --replace --map",
+    "compile-sass": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js static/src/sass/main.sass static/dist/css/main.css",
+    "postcss": "postcss --use autoprefixer --base 'last 2 versions' --use cssnano --replace ./static/dist/css/main.css --map",
+    "build:css": "npm run compile-sass && npm run postcss",
     "copy-purecss": "rimraf ./static/src/sass/vendors/purecss && copyfiles -f './node_modules/purecss/build/**/*' './static/src/sass/vendors/purecss'"
   },
   "author": "Kamil Radziszewski",
@@ -16,12 +17,14 @@
   "devDependencies": {
     "autoprefixer": "^7.2.4",
     "copyfiles": "^1.2.0",
+    "cssnano": "^3.10.0",
+    "foundation-sites": "^6.4.4-rc1",
     "livereload": "^0.6.3",
     "node-sass": "^4.7.2",
+    "node-sass-package-importer": "^5.0.3",
     "nodemon": "^1.14.9",
     "npm-run-all": "^4.1.2",
     "postcss-cli": "^4.1.1",
-    "purecss": "^1.0.0",
     "rimraf": "^2.6.2"
   }
 }
