@@ -67,6 +67,7 @@ new StarterSite();
  */
 function agrafka_scripts() {
 	// wp_enqueue_style( 'agrafka-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Montserrat:400,400i,600,600i&amp;subset=latin-ext' );
 	wp_enqueue_style( 'agrafka-main', get_template_directory_uri() . '/static/dist/css/main.css' );
 }
 

@@ -4,13 +4,11 @@
   "description": "WordPress Theme for AgRafka Films",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm run copy-purecss",
     "start": "npm-run-all --parallel watch:css",
     "watch:css": "nodemon --watch ./static/src/sass -e sass -x \"npm run build:css\"",
     "compile-sass": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js static/src/sass/main.sass static/dist/css/main.css",
     "postcss": "postcss --use autoprefixer --base 'last 2 versions' --use cssnano --replace ./static/dist/css/main.css --map",
-    "build:css": "npm run compile-sass && npm run postcss",
-    "copy-purecss": "rimraf ./static/src/sass/vendors/purecss && copyfiles -f './node_modules/purecss/build/**/*' './static/src/sass/vendors/purecss'"
+    "build:css": "npm run compile-sass && npm run postcss"
   },
   "author": "Kamil Radziszewski",
   "license": "MIT",
