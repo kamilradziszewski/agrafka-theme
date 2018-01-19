@@ -9,14 +9,20 @@
 	<body class="{{body_class}}" data-template="base.twig">
 		<header class="header" >
 			{% block header %}
-				<div class="wrapper">
+				{# <ul class="menu align-center expanded">
+					<li><a href="#">One</a></li>
+					<li><a href="#">Two</a></li>
+					<li><a href="#">Three</a></li>
+					<li><a href="#">Four</a></li>
+				</ul> #}
+				{# <div class="wrapper">
 					<h1 class="hdr-logo" role="banner">
 						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
+					</h1> #}
+					<nav id="nav-main" class="nav-main row column" role="navigation">
 						{% include "menu.twig" with {'menu': menu.get_items} %}
 					</nav><!-- #nav -->
-				</div>
+				{# </div> #}
 			{% endblock %}
 		</header>
 
@@ -35,7 +41,7 @@
 		</section>
 
 		{% block footer %}
-			<footer id="footer">
+			<footer id="footer" class="row column">
 				{% include 'footer.twig' %}
 			</footer>
 			{{ function('wp_footer') }}

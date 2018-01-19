@@ -1,0 +1,15 @@
+<div class="film-tile row">
+  <div class="medium-4 columns">
+    {% if post.thumbnail %}
+      <a href="{{ post.link }}">
+        <img src="{{ post.thumbnail.src|resize(640) }}" alt="{{ post.thumbnail.alt }}">
+      </a>
+    {% endif %}
+  </div>
+  <div class="medium-8 columns">
+    <a href="{{ post.link }}">
+      <h2>{{ post.title }}</h2>
+    </a>
+    {{ post.post_excerpt }}
+  </div>
+</div>

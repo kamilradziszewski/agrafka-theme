@@ -72,3 +72,17 @@ function agrafka_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'agrafka_scripts' );
+
+
+/**
+ * Add class in nav menu when viewing single post
+ */
+function my_special_nav_class( $classes, $item ) {
+    if ( is_single() && $item->title == 'Filmy' ) {
+        $classes[] = 'current-menu-item';
+    }
+
+    return $classes;
+}
+
+add_filter( 'nav_menu_css_class', 'my_special_nav_class', 10, 2 );
