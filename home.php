@@ -10,6 +10,6 @@ $args = array(
 );
 
 $context['posts'] = Timber::get_posts( $args );
-$context['posts_index_page'] = Timber::query_post();
+$context['post'] = Timber::query_post();
 
 Timber::render( 'home.twig', $context );

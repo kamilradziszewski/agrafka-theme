@@ -69,6 +69,12 @@ function agrafka_scripts() {
 	// wp_enqueue_style( 'agrafka-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Montserrat:400,400i,600,600i&amp;subset=latin-ext' );
 	wp_enqueue_style( 'agrafka-main', get_template_directory_uri() . '/static/dist/css/main.css' );
+	wp_enqueue_script( 'rellax', get_template_directory_uri() . '/static/dist/js/rellax.js' );
+	wp_enqueue_script( 'main',
+										 get_template_directory_uri() . '/static/dist/js/main.js',
+										 false,
+										 false,
+										 true );
 }
 
 add_action( 'wp_enqueue_scripts', 'agrafka_scripts' );

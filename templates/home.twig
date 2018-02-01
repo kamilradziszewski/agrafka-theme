@@ -1,10 +1,6 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <!-- <div class="row column"> -->
-    <!-- {{ posts_index_page.content }} -->
-  <!-- </div> -->
-
   {% for post in posts %}
     {% include 'partial/film-tile.twig' %}
   {% endfor %}

@@ -4,22 +4,31 @@
   "description": "WordPress Theme for AgRafka Films",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel watch:css",
+    "start": "npm-run-all --parallel copy-files watch:css",
     "watch:css": "nodemon --watch ./static/src/sass -e sass -x \"npm run build:css\"",
     "compile-sass": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js static/src/sass/main.sass static/dist/css/main.css",
     "postcss": "postcss --use autoprefixer --base 'last 2 versions' --use cssnano --replace ./static/dist/css/main.css --map",
-    "build:css": "npm run compile-sass && npm run postcss"
+    "build:css": "npm run compile-sass && npm run postcss",
+    "copy-files": "npm run copy-images && npm run copy-js",
+    "copy-images": "copyfiles -u 3 './static/src/img/**/*' './static/dist/img/'",
+    "copy-js": "npm run copy-rellax-plugin && copyfiles -f './static/src/js/**/*' './static/dist/js/'",
+    "copy-rellax-plugin": "copyfiles -f './node_modules/rellax/rellax.js' './static/src/js/vendor'"
   },
   "author": "Kamil Radziszewski",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
+    "copyfiles": "^1.2.0",
     "cssnano": "^3.10.0",
     "foundation-sites": "^6.4.4-rc1",
     "node-sass": "^4.7.2",
     "node-sass-package-importer": "^5.0.3",
     "nodemon": "^1.14.9",
     "npm-run-all": "^4.1.2",
-    "postcss-cli": "^4.1.1"
+    "postcss-cli": "^4.1.1",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "rellax": "^1.5.0"
   }
 }
