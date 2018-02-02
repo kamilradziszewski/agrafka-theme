@@ -9,7 +9,15 @@
 				</div>
 				<div class="column medium-7 large-6 large-offset-1">
 					<div class="article-body">
-						{{post.content}}
+						{{ post.content }}
+						{% if post.slug  == 'kontakt' %}
+							<div class="facebook-link">
+								<a href="https://www.facebook.com/agrafkafilm">
+									<img src="{{ theme.link }}/static/dist/img/icon-facebook.svg" alt="Facebook Icon">
+									<span>facebook.com/agrafkafilm</span>
+								</a>
+							</div>
+						{% endif %}
 					</div>
 				</div>
 			</section>
