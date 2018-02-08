@@ -146,6 +146,13 @@ function agrafka_register_required_plugins() {
 		),
 
 		array(
+			'name'      => 'Responsive Lightbox by dFactory',
+			'slug'      => 'responsive-lightbox',
+			'required'  => true,
+			'force_activation'   => true,
+		),
+
+		array(
 			'name'      => 'UpdraftPlus WordPress Backup Plugin',
 			'slug'      => 'updraftplus',
 			'required'  => false,
