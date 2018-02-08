@@ -259,3 +259,25 @@ if(function_exists("register_field_group"))
 		'menu_order' => 0,
 	));
 }
+
+
+
+
+
+/***************************************************************************
+ * Shortcode for FACEBOOK
+ */
+function register_facebook_shortcode( $atts ) {
+  if( isset( $atts['user'] ) ) {
+		$facebook_link = '<div class="facebook-link">'
+				  			  	. '<a href="https://www.facebook.com/'. $atts['user'] .'">'
+				  			  	. '<img src="'. get_template_directory_uri() .'/static/dist/img/icon-facebook.svg" alt="Facebook Icon">'
+				  			  	. '<span>facebook.com/'. $atts['user'] .'</span>'
+				  			  	. '</a>'
+                    . '</div>';
+                    
+                    return $facebook_link;
+  }
+}
+
+add_shortcode( 'facebook', 'register_facebook_shortcode' );
