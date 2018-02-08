@@ -11,8 +11,8 @@
     "build:css": "npm run compile-sass && npm run postcss",
     "copy-files": "npm run copy-images && npm run copy-js",
     "copy-images": "copyfiles -u 3 './static/src/img/**/*' './static/dist/img/'",
-    "copy-js": "npm run copy-rellax-plugin && copyfiles -f './static/src/js/**/*' './static/dist/js/'",
-    "copy-rellax-plugin": "copyfiles -f './node_modules/rellax/rellax.js' './static/src/js/vendor'"
+    "copy-js": "npm run copy-swiper-plugin && copyfiles -f './static/src/js/**/*' './static/dist/js/'",
+    "copy-swiper-plugin": "copyfiles -f './node_modules/swiper/dist/js/swiper.min.js' './static/src/js/vendor' && copyfiles -f './node_modules/swiper/dist/css/swiper.css' './static/src/sass/vendor'"
   },
   "author": "Kamil Radziszewski",
   "license": "MIT",
@@ -29,6 +29,6 @@
     "rimraf": "^2.6.2"
   },
   "dependencies": {
-    "rellax": "^1.5.0"
+    "swiper": "^4.1.0"
   }
 }

@@ -7,8 +7,21 @@
 {% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<div class="hero-image rellax" style="background-image: url('{{ post.thumbnail.src('large') }}');">
-		</div>
+
+		<!-- SLIDER -->
+		{% if slider_images|length > 0 %}
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					{% for slider_image in slider_images %}
+						<div class="swiper-slide">
+							<div class="slider-image" style="background-image: url('{{ slider_image.src|resize(1200) }}');">
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		{% endif %}
 
 		<header class="header" >
 			{% block header %}

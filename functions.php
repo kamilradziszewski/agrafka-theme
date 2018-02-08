@@ -70,7 +70,8 @@ function agrafka_scripts() {
 	// wp_enqueue_style( 'agrafka-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Montserrat:400,400i,600,600i&amp;subset=latin-ext' );
 	wp_enqueue_style( 'agrafka-main', get_template_directory_uri() . '/static/dist/css/main.css' );
-	wp_enqueue_script( 'rellax', get_template_directory_uri() . '/static/dist/js/rellax.js' );
+	wp_enqueue_script( 'rellax', get_template_directory_uri() . '/static/dist/js/rellax.min.js' );
+	wp_enqueue_script( 'swiper', get_template_directory_uri() . '/static/dist/js/swiper.min.js' );
 	wp_enqueue_script( 'main',
 										 get_template_directory_uri() . '/static/dist/js/main.js',
 										 false,
@@ -131,6 +132,13 @@ function agrafka_register_required_plugins() {
 		),
 
 		array(
+			'name'      => 'Advanced Custom Fields',
+			'slug'      => 'advanced-custom-fields',
+			'required'  => true,
+			'force_activation'   => true,
+		),
+
+		array(
 			'name'      => 'WPFront Scroll Top',
 			'slug'      => 'wpfront-scroll-top',
 			'required'  => true,
@@ -138,8 +146,8 @@ function agrafka_register_required_plugins() {
 		),
 
 		array(
-			'name'      => 'All-in-One WP Migration',
-			'slug'      => 'all-in-one-wp-migration',
+			'name'      => 'UpdraftPlus WordPress Backup Plugin',
+			'slug'      => 'updraftplus',
 			'required'  => false,
 		),
 
@@ -159,4 +167,88 @@ function agrafka_register_required_plugins() {
 	);
 
 	tgmpa( $plugins, $config );
+}
+
+
+
+
+
+/***************************************************************************
+ * ACF registered field groups
+ */
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_slider',
+		'title' => 'Slider',
+		'fields' => array (
+			array (
+				'key' => 'field_5a7b0e74a2701',
+				'label' => 'Slider photo 1',
+				'name' => 'slider_photo_1',
+				'type' => 'file',
+				'save_format' => 'id',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5a7b0fec23997',
+				'label' => 'Slider photo 2',
+				'name' => 'slider_photo_2',
+				'type' => 'file',
+				'save_format' => 'id',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5a7b100d23998',
+				'label' => 'Slider photo 3',
+				'name' => 'slider_photo_3',
+				'type' => 'file',
+				'save_format' => 'id',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5a7b101a2399a',
+				'label' => 'Slider photo 4',
+				'name' => 'slider_photo_4',
+				'type' => 'file',
+				'save_format' => 'id',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5a7b101a23999',
+				'label' => 'Slider photo 5',
+				'name' => 'slider_photo_5',
+				'type' => 'file',
+				'save_format' => 'id',
+				'library' => 'all',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => 0,
+					'group_no' => 1,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'default',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
 }
