@@ -5,7 +5,12 @@
 		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
 			<section class="article-content row">
 				<div class="sidebar column medium-3 medium-offset-1">
-					<img src="{{ theme.link }}/static/dist/img/agrafka-logo.svg" alt="AgRafka Film logo" class="logo">
+					{# <img src="{{ theme.link }}/static/dist/img/agrafka-logo.svg" alt="AgRafka Film logo" class="logo"> #}
+					<svg class="logo">
+						<use xmlns:xlink="http://www.w3.org/2000/xlink"
+								  xlink:href="{{ theme.link }}/static/dist/img/icons-sprite.svg#agrafka-logo">
+						</use>
+					</svg>
 				</div>
 				<div class="column medium-7 large-6">
 					<div class="article-body">

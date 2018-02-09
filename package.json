@@ -4,14 +4,17 @@
   "description": "WordPress Theme for AgRafka Films",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel copy-files watch:css",
+    "start": "npm-run-all --parallel clear-dist copy-files watch:css",
+    "clear-dist": "rimraf ./static/dist",
     "watch:css": "nodemon --watch ./static/src/sass -e sass -x \"npm run build:css\"",
     "compile-sass": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js static/src/sass/main.sass static/dist/css/main.css",
     "postcss": "postcss --use autoprefixer --base 'last 2 versions' --use cssnano --replace ./static/dist/css/main.css --map",
     "build:css": "npm run compile-sass && npm run postcss",
-    "copy-files": "npm run copy-images && npm run copy-js",
-    "copy-images": "copyfiles -u 3 './static/src/img/**/*' './static/dist/img/'",
-    "copy-js": "npm run copy-swiper-plugin && copyfiles -f './static/src/js/**/*' './static/dist/js/'",
+    "copy-files": "npm run images:copy && npm run js:copy",
+    "images:copy": "copyfiles -u 3 './static/src/img/**/*' './static/dist/img/' && npm run images:optimize && npm run images:create-sprite",
+    "images:optimize": "svgo -f './static/dist/img'",
+    "images:create-sprite": "svgstore -o static/dist/img/icons-sprite.svg static/dist/img/*.svg",
+    "js:copy": "npm run copy-swiper-plugin && copyfiles -f './static/src/js/**/*' './static/dist/js/'",
     "copy-swiper-plugin": "copyfiles -f './node_modules/swiper/dist/js/swiper.min.js' './static/src/js/vendor' && copyfiles -f './node_modules/swiper/dist/css/swiper.css' './static/src/sass/vendor'"
   },
   "author": "Kamil Radziszewski",
@@ -26,7 +29,9 @@
     "nodemon": "^1.14.9",
     "npm-run-all": "^4.1.2",
     "postcss-cli": "^4.1.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "svgo": "^1.0.4",
+    "svgstore-cli": "^1.3.1"
   },
   "dependencies": {
     "swiper": "^4.1.0"

@@ -269,9 +269,13 @@ if(function_exists("register_field_group"))
  */
 function register_facebook_shortcode( $atts ) {
   if( isset( $atts['user'] ) ) {
-		$facebook_link = '<div class="facebook-link">'
+		$facebook_link =	'<div class="facebook-link">'
 				  			  	. '<a href="https://www.facebook.com/'. $atts['user'] .'">'
-				  			  	. '<img src="'. get_template_directory_uri() .'/static/dist/img/icon-facebook.svg" alt="Facebook Icon">'
+										. '<svg>'
+										.	'<use xmlns:xlink="http://www.w3.org/2000/xlink"'
+										.				'xlink:href="'. get_template_directory_uri() .'/static/dist/img/icons-sprite.svg#icon-facebook">'
+										.	'</use>'
+										.	'</svg>'
 				  			  	. '<span>facebook.com/'. $atts['user'] .'</span>'
 				  			  	. '</a>'
                     . '</div>';
